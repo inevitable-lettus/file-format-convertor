@@ -1,0 +1,13 @@
+Flow of the program: 
+
+1. Input of file - uploading from local files 
+                 - dragging and dropping onto box
+
+2. Detection of file format - manual if not found automatically
+
+3. Check and display compatible conversions
+
+4. Convert into selected conversion 
+
+5. Display converted file - provide options - download
+                                            - convert to .zip and download
