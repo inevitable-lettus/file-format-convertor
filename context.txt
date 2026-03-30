@@ -1,0 +1,37 @@
+
+Project Overview
+You are building a local-only file format converter (repo: inevitable-lettus/file-format-convertor). The primary goal is privacy and speed—all file processing happens on the user's machine without relying on external APIs or server uploads.
+Tech Stack & Architecture
+We chose FastAPI over Flask because of its native support for asynchronous tasks (crucial for long file conversions) and built-in type validation.
+Your application is divided into two distinct layers to keep the code clean:
+	•	The Routing Layer (routers/): Handles HTTP requests, CORS, and receiving UploadFile objects.
+	•	The Logic Layer (converters/): Handles the actual file manipulation using specialized Python libraries.
+Planned Libraries:
+	•	Images: Pillow, cairosvg
+	•	Audio/Video: pydub, ffmpeg-python (both require the system FFmpeg binary)
+	•	Documents: python-docx, pdf2docx, pdfplumber, WeasyPrint
+Current Directory Structure
+Here is exactly what your project tree looks like right now:
+
+text
+file-format-convertor/
+├── venv/                     # Your isolated Python environment
+├── main.py                   # The application switchboard
+├── routers/
+│   ├── __init__.py           # Makes the folder an importable package
+│   ├── images.py             # Contains: router = APIRouter()
+│   ├── documents.py          # Contains: router = APIRouter()
+│   ├── videos.py             # Contains: router = APIRouter()
+│   └── audio.py              # Contains: router = APIRouter()
+├── converters/               # (To be built next)
+└── temp/                     # (Created via lifespan for in-progress files)
+Completed Milestones & Concepts Learned
+As a mentor, I want to highlight not just what you coded, but what you now understand:
+	1	Environment Setup: You created a virtual environment and installed fastapi[standard] and uvicorn.
+	2	ASGI vs. WSGI: You learned that Uvicorn acts as the asynchronous server listening for HTTP requests, which it then hands off to FastAPI.
+	3	CORS Middleware: You learned why browsers block cross-origin requests by default and how to configure CORSMiddleware to allow your future frontend to communicate with your backend.
+	4	App Lifespan: You understand how to use @asynccontextmanager to run startup tasks (like creating the temp/ folder) and shutdown tasks.
+	5	Modular Routing: You learned how to keep main.py clean by using APIRouter to compartmentalize endpoints and connecting them via app.include_router().
+	6	Python Packages: You learned that an __init__.py file is required to tell Python that a directory should be treated as an importable module.
+The Next Step
+Currently, your main.py is fully wired up, and your router files are empty shells. The next logical step is to build your first actual endpoint in routers/images.py.

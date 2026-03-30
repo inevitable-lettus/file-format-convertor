@@ -24,3 +24,7 @@ file-format-convertor/
 ├── requirements.txt
 └── README.md
 
+Running the application: 
+        
+        uvicorn main:app --reload
+
