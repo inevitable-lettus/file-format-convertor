@@ -19,12 +19,13 @@ async def convert_image(
         raise HTTPException(status_code=400, detail="File must have a name")
     
     temp_dir = Path("temp") #saved to temp
+    temp_dir.mkdir(exist_ok=True)  # creates it if missing, no error if it already exists
     unique_id = uuid.uuid4().hex
     original_suffix = Path(file.filename).suffix
 
     content_type_map = {
-        "image/jpeg": "jpg",
-        "image/png": "png",
+        "image/jpeg": ".jpg",
+        "image/png": ".png",
     }
     input_suffix = content_type_map.get(file.content_type)
     

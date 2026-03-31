@@ -33,5 +33,6 @@ As a mentor, I want to highlight not just what you coded, but what you now under
 	4	App Lifespan: You understand how to use @asynccontextmanager to run startup tasks (like creating the temp/ folder) and shutdown tasks.
 	5	Modular Routing: You learned how to keep main.py clean by using APIRouter to compartmentalize endpoints and connecting them via app.include_router().
 	6	Python Packages: You learned that an __init__.py file is required to tell Python that a directory should be treated as an importable module.
-The Next Step
-Currently, your main.py is fully wired up, and your router files are empty shells. The next logical step is to build your first actual endpoint in routers/images.py.
+
+Project status - Image Converter (converters/image_converter.py): Built conversion logic
+   using Pillow.
